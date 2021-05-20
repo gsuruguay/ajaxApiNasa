@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>NASA Picture of the Day</title>
+  </head>
+  <body>
+    Seleccione una fecha para ver anteriores
+    <input id="inputDate" type="date" required>
+    <button id="btnShow">Show Astronomic Picture</button>
+
+    <div class="container">
+      <div class="elem">
+        <h1 id="title"></h1>
+        <h3 id="date"></h3>
+        <img id="image" />
+        <p id="explanation"></p>
+      </div>
+    </div>
+    
+
+    <script>
+      const btnShow = document.getElementById("btnShow");
+      const title = document.getElementById("title");
+      const date = document.getElementById("date");
+      const explanation = document.getElementById("explanation");
+      const inputDate = document.getElementById("inputDate");
+
+      const imgPicture = document.getElementById("image");
+
+      btnShow.addEventListener("click", function () {
+        // Enviar un request GET a https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
+        // y recibir la respuesta
+        const xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("load", function () {
+          const response = JSON.parse(xhr.responseText);
+
+          imgPicture.src = response.url;
+          title.textContent = response.title;
+          date.textContent = "Imagen del dia "+ response.date;
+          explanation.textContent = response.explanation;
+        });
+        
+
+        //xhr.open("GET", "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
+        xhr.open("GET", "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date="+inputDate.value);
+        
+        xhr.send();
+      });
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,43 @@
+*{
+    color: beige;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: rgb(27, 25, 25);
+}
+#inputDate{
+    color: black;
+}
+#btnShow{
+    color: black;
+    border-radius: 15px;
+    padding: 5px;
+    background: linear-gradient(to right,#A6FFCB,#12D8FA,#1FA2FF);
+}
+#btnShow:hover{
+    background: #046eb9;
+    cursor: pointer;
+    color: blanchedalmond;
+}
+#title{
+    color: #f7bd60;
+}
+#date{
+    color: #A6FFCB;
+}
+#explanation{
+    color: rgb(150, 150, 247);
+    width: 90%;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.elem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
